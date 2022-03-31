@@ -1,0 +1,18 @@
+{
+  "name": "watson-calendar",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "",
+  "keywords": [
+    "Electron"
+  ],
+  "author": "Spiders",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^18.0.0"
+  }
+}
