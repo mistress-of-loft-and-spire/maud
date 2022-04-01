@@ -1,12 +1,28 @@
 // Modules to control application life and create native browser window
-const {app, BrowserWindow} = require('electron')
+const {
+  app,
+  BrowserWindow,
+  ipcMain,
+  dialog
+} = require("electron");
 const path = require('path')
+const fs = require("fs");
+const Store = require('electron-store');
+
+const store = new Store();
+
+var filePath = store.get("filePath");
+
+let mainWindow;
 
 function createWindow () {
   // Create the browser window.
-  const mainWindow = new BrowserWindow({
+  mainWindow = new BrowserWindow({
     width: 1000,
     height: 800,
+	minWidth: 500,
+	minHeight: 400,
+	darkTheme: true,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js')
     }
@@ -14,7 +30,8 @@ function createWindow () {
 
   // and load the index.html of the app.
   mainWindow.loadFile('index.html')
-
+  mainWindow.removeMenu();
+  
   // Open the DevTools.
   mainWindow.webContents.openDevTools()
 }
@@ -36,8 +53,49 @@ app.whenReady().then(() => {
 // for applications and their menu bar to stay active until the user quits
 // explicitly with Cmd + Q.
 app.on('window-all-closed', function () {
-  if (process.platform !== 'darwin') app.quit()
-})
+	if (process.platform !== 'darwin') app.quit()
+});
 
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and require them here.
+
+
+ipcMain.on("init", (event, args) => {
+	if (filePath) mainWindow.webContents.send("setFile", filePath);
+});
+
+
+var defaultWatsonPath = app.getPath("appData") + '\\watson'; 
+
+ipcMain.on("openFileDialog", (event, args) => {
+	dialog.showOpenDialog(mainWindow, {
+		title: 'Load Watson frames file',
+		defaultPath: defaultWatsonPath,
+		properties: ['openFile', 'showHiddenFiles']
+	}).then(result => {
+		if (!result.canceled)
+		{
+			store.set('filePath', result.filePaths[0]);
+			mainWindow.webContents.send("setFile", result.filePaths[0]);
+		}
+	  }).catch(err => {
+		console.log(err)
+	  });
+});
+
+ipcMain.on("print", (event, args) => {
+	mainWindow.webContents.print({silent:false, printBackground:false})
+});
+
+ipcMain.on("readFrames", (event, args) => {
+
+	fs.readFile(filePath, 'utf8', (error, data) => {
+
+    if (error != null) {
+		console.log(error);
+    }
+    else
+    {
+      mainWindow.webContents.send("displayFrames", data);
+    }
+    
+  });
+});

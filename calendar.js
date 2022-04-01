@@ -1,34 +1,53 @@
-import { SVGGraph, CanvasGraph, StrGraph } from 'calendar-graph';
-
-const data = [
-  { date: '2016-01-01', count: 1 },
-  { date: '2016-01-03', count: 4 },
-  { date: '2016-01-06', count: 2 },
-  // ...and so on
-];
-
-new SVGGraph('#svg-root', data, {
-  startDate: new Date('2016-01-01'),
-  endDate: new Date('2016-04-01'),
-  colorFun: (v) => {
-    return '#d6e685';
+     
+  var options = {
+    series: [{
+    name: 'commits',
+    data: [30, 40, 35, 50, 49, 60, 70, 91, 125]
+  }],
+    chart: {
+    id: 'chartyear',
+    type: 'area',
+    height: 160,
+    background: '#F6F8FA',
+    toolbar: {
+      show: false,
+      autoSelected: 'pan'
+    },
+    events: {
+      mounted: function (chart) {
+        var commitsEl = document.querySelector('.cmeta span.commits');
+        var commits = chart.getSeriesTotalXRange(chart.w.globals.minX, chart.w.globals.maxX)
+  
+        commitsEl.innerHTML = commits
+      },
+      updated: function (chart) {
+        var commitsEl = document.querySelector('.cmeta span.commits');
+        var commits = chart.getSeriesTotalXRange(chart.w.globals.minX, chart.w.globals.maxX)
+  
+        commitsEl.innerHTML = commits
+      }
+    }
+  },
+  colors: ['#FF7F00'],
+  stroke: {
+    width: 0,
+    curve: 'smooth'
+  },
+  dataLabels: {
+    enabled: false
+  },
+  fill: {
+    opacity: 1,
+    type: 'solid'
+  },
+  yaxis: {
+    show: false,
+    tickAmount: 3,
+  },
+  xaxis: {
+    type: 'datetime',
   }
-});
+  };
 
-new CanvasGraph('#canvas-root', data, {
-  startDate: new Date('2016-01-01'),
-  endDate: new Date('2016-04-01'),
-  colorFun: (v) => {
-    return '#d6e685';
-  }
-});
-
-const strGraph = new StrGraph(data, {
-  startDate: new Date('2016-01-01'),
-  endDate: new Date('2016-04-01'),
-  colorFun: (v) => {
-    return '#d6e685';
-  }
-});
-
-document.getElementById("node-version").innerHTML =  "asdasdads";
+  var chart = new ApexCharts(document.querySelector("#chart"), options);
+  chart.render();

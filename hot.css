@@ -1,0 +1,97 @@
+
+html, body {
+    margin: 0 0;
+    padding: 0 0;
+
+    height: 100%;
+    overflow: hidden;
+
+    font-size: 1em;
+    font-family: "Inter";
+	white-space: nowrap;
+
+	display: flex;
+	flex-direction: column;
+
+    color: #fffffe;
+    background: #16161a;
+}
+
+nav {
+    padding: 1em;
+
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+    
+    background-color: #242629;
+}
+
+nav.timespan {
+	background-color: #1d1f22;
+}
+
+main {
+	flex-grow: 1;
+    overflow-y: scroll;
+	padding: 2em 10%;
+}
+
+@media (max-width: 800px) {
+    main {
+        padding: 1em;
+    }
+}  
+
+p {
+	color: #94a1b2;
+	word-break: break-all;
+	word-wrap: break-word;
+	white-space: normal;
+}
+
+.leftAlign {
+}
+
+.centerAlign {
+	flex-grow: 1;
+	overflow: hidden;
+}
+
+button {
+    height: 2.5em;
+    padding: 0 1em;
+
+    font-size: 1em;
+
+    cursor: pointer;
+    color: #fffffe;
+    background-color: #7f5af0;
+    
+    border: none;
+    border-radius: 0.5em;
+
+	transition: 0.25s;
+}
+
+button:hover {
+    background-color: #2cb67d;
+}
+button:active {
+    background-color: #94a1b2;
+}
+
+.centertext {
+
+	color: #94a1b2;
+    margin: 0.6em auto 0 auto;
+	padding: 0 1em;
+
+	max-width: 90%;
+	min-width: 0%;
+
+    text-align: center;
+
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
