@@ -17,6 +17,22 @@
     "electron-store": "^8.0.1"
   },
   "devDependencies": {
+    "@electron-forge/publisher-github": "^6.0.0-beta.63",
     "electron": "18.0.1"
+  },
+  "config": {
+    "forge": {
+      "publishers": [
+        {
+          "name": "@electron-forge/publisher-github",
+          "config": {
+            "repository": {
+              "owner": "mistress-of-loft-and-spire",
+              "name": "maud"
+            }
+          }
+        }
+      ]
+    }
   }
 }
