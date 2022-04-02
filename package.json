@@ -31,7 +31,9 @@
   },
   "config": {
     "forge": {
-      "packagerConfig": {},
+      "packagerConfig": {
+	    "executableName": "maud"
+	  },
       "makers": [
         {
           "name": "@electron-forge/maker-squirrel",
@@ -50,6 +52,9 @@
           "config": {}
         }
       ],
+	  "electronPackagerConfig": {
+		"executableName": "maud"
+	  },
       "publishers": [
         {
           "name": "@electron-forge/publisher-github",
