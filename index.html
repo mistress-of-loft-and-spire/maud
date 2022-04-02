@@ -5,45 +5,101 @@
 	<meta charset="UTF-8">
   	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'">
-	<title>My Electron App</title>
+
+	<script src="./assets/includes/cal-heatmap/d3.min.js"></script>
+	<script src="./assets/includes/cal-heatmap/cal-heatmap.js"></script>
+	<link rel="stylesheet" href="./assets/includes/cal-heatmap/cal-heatmap.css">
 	
-	<link rel="stylesheet" href="./hot.css">
-	<link rel="stylesheet" href="./fonts/inter/inter.css">
+	<link rel="stylesheet" href="./assets/hot.css">
+	<link rel="stylesheet" href="./assets/fonts/inter/inter.css">
+
 </head>
 
 <body>
 	<nav>
 		<div class="leftAlign">
 			<button id="openBtn">📂 Load Frames</button>
+			<button id="backBtn" class="hidden">← Back</button>
+			<input type="file" style="display:none;" id="file" name="file"/>
 		</div>
 		<div class="centerAlign">
-			<div id="filePath" class="centertext"></div>
+			<div id="filePath" class="centertext">No frames loaded</div>
 		</div>
 		<div class="leftAlign">
-			<button id="printBtn">🖨️ Print Page</button>
+			<button id="printBtn">🖨️ Print</button>
+		</div>
+		<div class="leftAlign">
+			<button id="aboutBtn">🔮</button>
 		</div>
 	</nav>
 
-	<nav class="timespan">
-		<div class="leftAlign">
-			<form>
-				<textarea></textarea>
-				<button id="openBtn">📆</button>
-				<span>--></span>
-				<textarea></textarea>
-				<button id="openBtn">📆</button>
-			</form>
-		</div>
-	</nav>
+	<aside id="aboutView">
+		<div class="dialogBox">
 
-	<main>
-		<h1 id="title">🍃 Welcome</h1>
-		<div id="content">
+			<button id="closeAboutBtn">×</button>
+
+			<center>
+			<h1>🔍 Maud</h1>
+			<p id="descriptionText"></p>
+			<p id="versionNumber">v0.9</p>
+			</center>
+
+			<p><img alt="Old newspaper clipping. A photograph of a butch-looking person wearing a newsboy cap, vintage suit and smoking a cigarette. The caption reads: 'Miss Maud West disguised as a masculine sleuth.'" src="./assets/images/west2.png">
+			<span class="caption">The Charlotte News; Friday, March 3, 1922; UNC University Library</span></p>
 			<p>Load a Watson frames file to get started!</p>
+		</div>
+	</aside>
+
+	<main id="initialView">
+
+		<div class="lowerMain">
+
+			<div>
+			</br></br>
+				<center>
+				<h1>🍃 Welcome</h1>
+				<p>Load a Watson frames file to get started!</p>
+				</center>
+			</div>
+
+		</div>
+	</main>
+
+	<main id="mainView" class="hidden">
+		<div id="dateContainer" class="flexRow">
+			<input type="date" id="startdate" disabled title="Not yet implemented" /><span> → </span><input type="date" id="enddate" disabled title="Not yet implemented" />
+		</div>
+
+		<div id="calendarContainer">
+			<div id="heatmap"></div>
+			<div class="calendarOverlay leftBorder" id="calOverlay"></div>
+
+			<div class="flexRow">
+				<div class="rightAlign">
+					<button id="calLeftBtn">←</button>
+				</div>
+				<div class="rightAlign">
+					<button id="calRightBtn">→</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="lowerMain">
+
+			<div id="timeContainer">
+			</div>
+
+			<div id="projectContainer">
+			</div>
+
+			<div id="frameList" class="hidden">
+
+			</div>
+
 		</div>
 	</main>
 </body>
 
-<script src="./view.js"></script>
+<script src="./renderer.js"></script>
 
 </html>

@@ -1,0 +1,416 @@
+
+html, body {
+    margin: 0 0;
+    padding: 0 0;
+
+    height: 100%;
+    overflow: hidden;
+
+    font-size: 1em;
+    font-family: "Inter";
+	white-space: nowrap;
+
+	display: flex;
+	flex-direction: column;
+
+    color: #fffffe;
+    background: #16161a;
+
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+nav {
+    padding: 1em;
+
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-items: baseline;
+	gap: 1em;
+    
+    background-color: #242629;
+	
+	box-shadow: 0 0 2em #16161a;
+	z-index: 2;
+}
+
+main {
+	flex-grow: 1;
+    overflow-y: auto;
+	padding: 2em 10%;
+}
+
+@media (max-width: 800px) {
+    main {
+        padding: 1em;
+    }
+}  
+
+p, span {
+	color: #94a1b2;
+	word-break: break-all;
+	word-wrap: break-word;
+	white-space: normal;
+}
+
+.leftAlign {
+}
+
+.centerAlign {
+	flex-grow: 1;
+	overflow: hidden;
+}
+
+button {
+    height: 2.5em;
+    padding: 0 1em;
+
+    font-size: 1em;
+
+    cursor: pointer;
+    color: #fffffe;
+    background-color: #7f5af0;
+    
+    border: none;
+    border-radius: 0.5em;
+	box-shadow: 0 0 8px #16161a;
+
+	transition: 0.25s;
+	opacity: 1.0;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+button:active {
+    opacity: 1.0;
+}
+
+button:disabled {
+	background-color: #242629;
+	color: #94a1b2;
+	cursor: auto;
+}
+
+input, textarea, button {font-family: inherit}
+
+input[type=text], input[type=date] {
+	height: 2.5em;
+    padding: 0 1em;
+
+    font-size: 1em;
+
+    cursor: pointer;
+    color: #fffffe;
+    background-color: #242629;
+    
+    border: none;
+    border-radius: 0.5em;
+	box-shadow: 0 0 8px #16161a;
+
+	transition: 0.25s;
+	transition: border 0s;
+
+	font-variant-numeric: tabular-nums;
+}
+
+input[type=text]:focus-visible, input[type=date]:focus-visible {
+	outline: #7f5af0 2px solid;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+	filter: invert(100%);
+	cursor: pointer;
+}
+
+input:disabled {
+	color: #94a1b2;
+	cursor: auto;
+}
+
+#aboutView {
+	width: 100%;
+	height: 100vh;
+
+	display: flex;
+	position: fixed;
+	top: 0;
+	left: 0;
+
+	background-color: #16161a69;
+	
+	opacity: 1;
+	transition: opacity 0.5s;
+
+	z-index: 2;
+}
+
+.dialogBox {
+	height: 30em;
+	width: 30em;
+	max-height: 100vh;
+	max-width: 100%;
+
+	margin: auto auto;
+    padding: 2em 2em;
+
+	overflow-y: auto;
+
+    color: #fffffe;
+    background-color: #7f5af0;
+    
+    border: none;
+    border-radius: 0.5em;
+	box-shadow: 0 0 4em #16161a;
+
+	z-index: 10;
+
+	
+	-webkit-user-select: text;
+	-moz-user-select: text;
+	-ms-user-select: text;
+	user-select: text;
+}
+
+.dialogBox p {
+	color:#fffffe;
+}
+
+.dialogBox img {
+	max-width: 16em;
+	margin: auto auto;
+	display: block;
+}
+
+#closeAboutBtn {
+	float: right;
+	position: sticky;
+	margin-top: -1em;
+	margin-right: -1em;
+	top: -1em;
+	right: -1em;
+	background-color:#242629;
+}
+
+.caption {
+	width: 21em;
+	display:block;
+	margin: 2em auto;
+
+	font-size: 0.8em;
+
+	color:#fffffe;
+	font-style: italic;
+}
+
+.centertext {
+	color: #94a1b2;
+	min-width: 0%;
+
+    text-align: center;
+
+	text-overflow: ellipsis;
+	overflow: hidden;
+
+	-webkit-user-select: text;
+	-moz-user-select: text;
+	-ms-user-select: text;
+	user-select: text;
+}
+
+.flexRow {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-items: baseline;
+	gap: 1em;
+}
+
+.flexProjects {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 1em;
+	margin: 1.5em 0;
+}
+
+.flexProjects button {
+	background: none;
+	border: solid 2px #2cb67d;
+}
+
+.lowerMain {
+	max-width: 47em;
+	margin: 0 auto;
+}
+
+#timeContainer h1, #projectContainer h1, #frameList h1 {
+	font-size: 1em;
+	font-weight: normal;
+	color:#94a1b2;
+}
+
+#timeContainer p {
+	font-size: 2em;
+	font-weight: bold;
+	color:#fffffe;
+	margin: 0.5em 0;
+	
+	-webkit-user-select: text;
+	-moz-user-select: text;
+	-ms-user-select: text;
+	user-select: text;
+}
+
+#timeContainer {
+	margin-bottom: 2em;
+}
+
+#dateContainer {
+	justify-content: center;
+
+	margin-bottom: 2em;
+}
+
+#startdate, #enddate {
+	flex-grow: 1;
+	max-width: 20em;
+}
+
+#calendarContainer {
+	display: flex;
+	justify-content: right;
+	overflow: hidden;
+	width: 100%;
+	padding-bottom: 2em;
+	position: relative;
+}
+
+.calendarOverlay {
+	position: absolute;
+	display: block;
+	top: 0;
+	left: -4em;
+	right: -4em;
+	width: auto;
+	height: 100%;
+
+	pointer-events: none;
+	
+	background: linear-gradient(to right, #16161a, #fff0 4em, #fff0 calc(100% - 4em), #16161a);
+	transition: 0.5s;
+}
+
+.calendarOverlay.leftBorder {
+	left: 0;
+}
+.calendarOverlay.rightBorder {
+	right: 0;
+}
+
+#calendarContainer .flexRow {
+	position: absolute;
+	bottom: 0;
+	right:0;
+	font-size: 0.8em;
+}
+
+.cal-heatmap-container .graph-rect {
+	fill: #242629;
+}
+
+.cal-heatmap-container .subdomain-text {
+	fill: #16161a;
+	font-size: 0.8em;
+}
+
+.cal-heatmap-container .graph-label {
+	fill: #94a1b2;
+	font-size: 0.8em;
+}
+
+::-webkit-scrollbar {
+  width: 1em;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: none;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background-color: #24262969;
+	border-radius: 0.5em;
+	transition: background-color 0.25s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background-color: #242629;
+}
+
+table {
+	width: 100%;
+	vertical-align: left;
+	color: #94a1b2;
+
+	font-variant-numeric: tabular-nums;
+	
+	
+	-webkit-user-select: text;
+	-moz-user-select: text;
+	-ms-user-select: text;
+	user-select: text;
+}
+
+td, th {
+    padding: 0.5em;
+	text-align: center;
+}
+
+tr:nth-of-type(2n) {
+	background-color: #242629;
+}
+
+tr {
+	border-radius: 0.5em;
+	transition: 0.25s;
+	outline: solid 2px #2cb67d00;
+}
+
+tr:nth-of-type(1) {
+	background-color: #16161a;
+}
+
+tr:hover {
+	outline: solid 2px #2cb67d;
+}
+tr:nth-of-type(1) {
+	outline: none;
+    position: sticky;
+    top: -2em;
+    background-color: #16161a;
+    box-shadow: 0 0 2em #16161a;
+    height: 4em;
+    margin-top: -1em;
+	transition: 0s;
+}
+
+@media (max-width: 800px) {
+	tr:nth-of-type(1) {
+		top: -1em;
+	}
+}
+
+.hidden {
+	display:none;
+}
+
+.hiddenView {
+	opacity: 0 !important;
+	pointer-events: none !important;
+}

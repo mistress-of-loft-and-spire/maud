@@ -5,9 +5,12 @@ const {
   ipcMain,
   dialog
 } = require("electron");
-const path = require('path')
+const path = require('path');
 const fs = require("fs");
 const Store = require('electron-store');
+
+const easepick = require('@easepick/bundle');
+
 
 const store = new Store();
 
@@ -21,7 +24,7 @@ function createWindow () {
     width: 1000,
     height: 800,
 	minWidth: 500,
-	minHeight: 400,
+	minHeight: 600,
 	darkTheme: true,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js')
@@ -33,7 +36,7 @@ function createWindow () {
   mainWindow.removeMenu();
   
   // Open the DevTools.
-  mainWindow.webContents.openDevTools()
+  //mainWindow.webContents.openDevTools()
 }
 
 // This method will be called when Electron has finished
@@ -94,7 +97,7 @@ ipcMain.on("readFrames", (event, args) => {
     }
     else
     {
-      mainWindow.webContents.send("displayFrames", data);
+      mainWindow.webContents.send("loadFrames", data);
     }
     
   });

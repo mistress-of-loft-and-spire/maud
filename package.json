@@ -1,16 +1,15 @@
 {
-  "name": "watson-calendar",
-  "productName": "watson-calendar",
-  "description": "My Electron application description",
-  "keywords": [],
+  "name": "maud",
+  "productName": "Maud",
+  "description": "Small Electron frontend for Watson frames",
+  "keywords": ["timertracker", "watson"],
   "main": "./main.js",
-  "version": "1.0.0",
-  "author": "bad jubies",
+  "version": "0.90",
+  "author": "Mistress of Loft and Spire",
   "scripts": {
     "start": "electron ."
   },
   "dependencies": {
-    "electron-store": "^8.0.1"
   },
   "devDependencies": {
     "electron": "18.0.1"
