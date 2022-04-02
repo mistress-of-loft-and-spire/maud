@@ -7,7 +7,7 @@
     "watson"
   ],
   "main": "./main.js",
-  "version": "0.50",
+  "version": "0.5.1",
   "author": "Mistress of Loft and Spire",
   "scripts": {
     "start": "electron ."
