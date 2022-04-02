@@ -1,27 +1,55 @@
 {
   "name": "maud",
   "productName": "Maud",
-  "description": "A small electron app to display Watson frame data.",
+  "description": "A small electron app to display Watson frame data",
+  "version": "0.5.1",
+  "author": "Mistress of Loft and Spire",
   "keywords": [
     "timertracker",
     "watson"
   ],
   "main": "./main.js",
-  "version": "0.5.1",
-  "author": "Mistress of Loft and Spire",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish"
   },
   "dependencies": {
-    "electron-builder": "^22.14.13",
+    "electron-squirrel-startup": "^1.0.0",
     "electron-store": "^8.0.1"
   },
   "devDependencies": {
+    "@electron-forge/cli": "^6.0.0-beta.63",
+    "@electron-forge/maker-deb": "^6.0.0-beta.63",
+    "@electron-forge/maker-flatpak": "^6.0.0-beta.63",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.63",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.63",
+    "@electron-forge/maker-zip": "^6.0.0-beta.63",
     "@electron-forge/publisher-github": "^6.0.0-beta.63",
     "electron": "18.0.1"
   },
   "config": {
     "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "maud"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-flatpak",
+          "config": {}
+        }
+      ],
       "publishers": [
         {
           "name": "@electron-forge/publisher-github",
