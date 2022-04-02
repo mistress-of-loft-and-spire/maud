@@ -2,7 +2,10 @@
   "name": "maud",
   "productName": "Maud",
   "description": "A small electron app to display Watson frame data.",
-  "keywords": ["timertracker", "watson"],
+  "keywords": [
+    "timertracker",
+    "watson"
+  ],
   "main": "./main.js",
   "version": "0.50",
   "author": "Mistress of Loft and Spire",
@@ -10,6 +13,7 @@
     "start": "electron ."
   },
   "dependencies": {
+    "electron-store": "^8.0.1"
   },
   "devDependencies": {
     "electron": "18.0.1"

@@ -9,8 +9,6 @@ const path = require('path');
 const fs = require("fs");
 const Store = require('electron-store');
 
-const easepick = require('@easepick/bundle');
-
 const pjson = require('./package.json');
 
 
