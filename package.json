@@ -13,6 +13,7 @@
     "start": "electron ."
   },
   "dependencies": {
+    "electron-builder": "^22.14.13",
     "electron-store": "^8.0.1"
   },
   "devDependencies": {
