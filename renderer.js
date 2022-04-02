@@ -10,6 +10,13 @@ window.api.receive("loadFrames", (data) => {
 	renderMain();
 });
 
+window.api.receive("setMetadata", (metadata) => {
+	console.log(metadata);
+
+	document.getElementById("versionText").innerHTML = "v" + metadata[0];
+	document.getElementById("descriptionText").innerHTML = metadata[2];
+});
+
 function parseData(data) {
 	frames = JSON.parse(data);
 

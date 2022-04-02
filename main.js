@@ -11,6 +11,8 @@ const Store = require('electron-store');
 
 const easepick = require('@easepick/bundle');
 
+const pjson = require('./package.json');
+
 
 const store = new Store();
 
@@ -34,6 +36,11 @@ function createWindow () {
   // and load the index.html of the app.
   mainWindow.loadFile('index.html')
   mainWindow.removeMenu();
+
+  mainWindow.webContents.on('new-window', function(e, url) {
+	e.preventDefault();
+	require('electron').shell.openExternal(url);
+  });
   
   // Open the DevTools.
   //mainWindow.webContents.openDevTools()
@@ -63,6 +70,8 @@ app.on('window-all-closed', function () {
 
 ipcMain.on("init", (event, args) => {
 	if (filePath) mainWindow.webContents.send("setFile", filePath);
+
+	mainWindow.webContents.send("setMetadata", [pjson.version, pjson.author, pjson.description]);
 });
 
 

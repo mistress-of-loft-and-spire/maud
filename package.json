@@ -1,7 +1,7 @@
 {
   "name": "maud",
   "productName": "Maud",
-  "description": "Small Electron frontend for Watson frames",
+  "description": "A small electron app to display Watson frame data.",
   "keywords": ["timertracker", "watson"],
   "main": "./main.js",
   "version": "0.90",
