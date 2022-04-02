@@ -20,31 +20,14 @@ window.api.receive("setMetadata", (metadata) => {
 function parseData(data) {
 	frames = JSON.parse(data);
 
-	console.log(frames);
-
-	var graphText = "";
-
 	for (var i in frames)
 	{
 		// Projects
 		var isAdded = false
 		for (var project in projects) { if (projects[project] == frames[i][2]) isAdded = true; }
 		if (!isAdded) projects.push(frames[i][2]);
-
-		// Graph Data
-		if (graphText == "") graphText += "{ "
-		else graphText += ", "
-		graphText += '"' + frames[i][0] + '": ';
-
-		timeDifference = frames[i][1] - frames[i][0]
-		var startDate = new Date(0); startDate.setUTCMilliseconds(frames[i][0]);
-		var endDate   = new Date(0); endDate.setUTCMilliseconds(frames[i][1]);
-		var hours = (endDate.getTime() - startDate.getTime()) / 3600;
-		graphText += Math.round(hours*10) / 10;
 	}
 	
-	graphText += " }";
-	graphData = JSON.parse(graphText);
 }
 
 /*
@@ -70,8 +53,6 @@ var filePath = "";
 var frames = [];
 var projects = [];
 
-var graphData = new Object();
-
 var calendar = new CalHeatMap();
 
 
@@ -96,7 +77,7 @@ function renderMain(project = "") {
 	document.getElementById("initialView").classList.add("hidden");
 
 	renderDatePicker();
-	renderCalendar();
+	renderCalendar(project);
 	renderTime(project);
 
 	if (project == "")
@@ -117,8 +98,32 @@ function renderDatePicker() {
 	document.getElementById("enddate").valueAsDate = new Date()
 }
 
-function renderCalendar() {
+function renderCalendar(project = "") {
 	
+	var graphText = "";
+
+	for (var i in frames)
+	{
+		if (project != "" && project != frames[i][2])
+			continue;
+
+		// Graph Data
+		if (graphText == "") graphText += "{ "
+		else graphText += ", "
+		graphText += '"' + frames[i][0] + '": ';
+
+		timeDifference = frames[i][1] - frames[i][0]
+		var startDate = new Date(0); startDate.setUTCMilliseconds(frames[i][0]);
+		var endDate   = new Date(0); endDate.setUTCMilliseconds(frames[i][1]);
+		var hours = (endDate.getTime() - startDate.getTime()) / 3600;
+		graphText += Math.round(hours*10) / 10;
+	}
+	
+	graphText += " }";
+	var graphData = JSON.parse(graphText);
+
+
+
 	var date = new Date()
 	date = new Date(date.getFullYear() - 1, date.getMonth() + 2, 0)
 	
