@@ -23,7 +23,7 @@ A small Electron app that displays frame data from the [Watson](https://github.c
 
 ## About this Project
 
-This tool was made as a personal project to help me in getting a better handle on timekeeping for freelance- and other precarious work. I'm publishing this in the hope that it can be helpful to others in their personal and non-personal projects.
+This tool was made as a personal project for getting a better handle on my worktime. I'm publishing this in the hope that it can be helpful to others in their personal and non-personal projects.
 
 While Maud is usable, it is still in a pretty early and rough state. You might encounter bugs or oddities.
 
