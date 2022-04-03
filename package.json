@@ -2,7 +2,7 @@
   "name": "maud",
   "productName": "Maud",
   "description": "A small electron app to display Watson frame data",
-  "version": "0.5.1",
+  "version": "0.5.3",
   "author": "Mistress of Loft and Spire",
   "keywords": [
     "timertracker",
