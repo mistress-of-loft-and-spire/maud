@@ -13,9 +13,9 @@ A small Electron app that displays frame data from the [Watson](https://github.c
 
 1. [Download the latest version of Maud](https://github.com/mistress-of-loft-and-spire/maud/releases) (Linux, Windows, MacOSX)
 
-2. Extract the archive to where you like and run *maud*
+2. Extract the archive to where you like and run `maud` / `maud.exe` / `Maud.app`
 
-3. Load the Watson *frames* file. It should be located at:
+3. Load the Watson `frames` file. It should be located at:
    * Linux: `~/.config/watson/frames`
    * Windows: `%appdata%\watson\frames` or `C:\Users\<user>\AppData\Roaming\watson\frames`
    * MacOSX: `~/Library/Application Support/watson/frames`
